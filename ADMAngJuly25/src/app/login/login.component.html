@@ -1,0 +1,61 @@
+<div class="login-container">
+    <div class="login-card">
+        <div class="login-header">
+            <h2>Developer Portal Login</h2>
+            <p>Please sign in to manage developer bios</p>
+        </div>
+
+        <form [formGroup]="loginForm" (ngSubmit)="onSubmit()" class="login-form">
+            <!-- Username Field -->
+            <div class="form-group">
+                <label for="username">Username</label>
+                <input type="text" id="username" class="form-control" formControlName="username"
+                    placeholder="Enter your username" [class.is-invalid]="isUsernameInvalid" (input)="clearError()" />
+                <div *ngIf="isUsernameInvalid" class="invalid-feedback">
+                    <small *ngIf="loginForm.get('username')?.errors?.['required']">
+                        Username is required
+                    </small>
+                    <small *ngIf="loginForm.get('username')?.errors?.['minlength']">
+                        Username must be at least 3 characters long
+                    </small>
+                </div>
+            </div>
+
+            <!-- Password Field -->
+            <div class="form-group">
+                <label for="password">Password</label>
+                <input type="password" id="password" class="form-control" formControlName="password"
+                    placeholder="Enter your password" [class.is-invalid]="isPasswordInvalid" (input)="clearError()" />
+                <div *ngIf="isPasswordInvalid" class="invalid-feedback">
+                    <small *ngIf="loginForm.get('password')?.errors?.['required']">
+                        Password is required
+                    </small>
+                    <small *ngIf="loginForm.get('password')?.errors?.['minlength']">
+                        Password must be at least 6 characters long
+                    </small>
+                </div>
+            </div>
+
+            <!-- Error Message -->
+            <div *ngIf="loginError" class="alert alert-danger">
+                {{ loginError }}
+            </div>
+
+            <!-- Submit Button -->
+            <div class="form-group">
+                <button type="submit" class="btn btn-primary btn-block" [disabled]="loginForm.invalid || isLoading">
+                    <span *ngIf="isLoading" class="spinner"></span>
+                    {{ isLoading ? 'Signing in...' : 'Sign In' }}
+                </button>
+            </div>
+        </form>
+
+        <div class="login-footer">
+            <p class="demo-info">
+                <strong>Demo credentials:</strong><br>
+                Username: any username (min 3 characters)<br>
+                Password: any password (min 6 characters)
+            </p>
+        </div>
+    </div>
+</div>
