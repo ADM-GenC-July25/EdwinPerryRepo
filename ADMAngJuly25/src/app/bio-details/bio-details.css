@@ -1,0 +1,16 @@
+  table {
+    border-collapse: collapse;
+    width: 80%;
+    justify-self: center;
+  }
+  th {
+    text-decoration: underline;
+    border: 1px solid black;
+    padding: 8px;
+    text-align: left;
+  }
+  td {
+    border: 1px solid black;
+    padding: 8px;
+    text-align: left;
+  }

@@ -1,0 +1,21 @@
+<main>
+<table>
+    <thead>
+        <th>First Name</th>
+        <th>Last Name</th>
+        <th>Preferred Language</th>
+        <th>Year Started</th>
+
+    </thead>
+    
+    <tbody>
+        @for(developer of dev; track developer.firstName){
+            <tr>
+            <td><a [routerLink]="['/bio', developer.id]">{{developer.firstName}} {{developer.lastName}}</a></td>
+        </tr>
+        }
+        
+    </tbody>
+</table>
+<button (click)="showConsole()">Something</button>
+</main>
